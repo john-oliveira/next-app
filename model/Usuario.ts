@@ -1,0 +1,8 @@
+type Usuario = {
+    id: string
+    name: string;
+    username: string;
+    email: string;
+}
+
+export default Usuario;
