@@ -8,6 +8,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
   let id = req.query.id;
   let usuario: Usuario = { id:'', name: '', username: '', email: ''};
   usuario = usuarios.find(usu => usu.id == id)!
-  console.log(usuario)
   res.status(200).json(usuario);
 }
