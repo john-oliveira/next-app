@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next"
+import { GetServerSideProps, NextPage } from "next"
 import Link from "next/link"
 import Usuario from "../../model/Usuario"
 
@@ -20,15 +20,14 @@ const UsuariosPage: NextPage<Props> = ({ usuarios }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users');
   const usuarios: Usuario[] = await res.json();
 
   return {
     props: {
       usuarios
-    },
-    revalidate: 10
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import { GetServerSideProps, NextPage } from "next"
 import Usuario from "../../../model/Usuario"
 
 const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
@@ -12,27 +12,15 @@ const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
     )
 }
 
-export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const { id } = context.params! // Non-null assertion operator;
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
     const usuario: Usuario = await res.json()
     return {
         props: {
             usuario
-        },
-        revalidate: 10
+        }
     }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [
-            { params: { id: '1' } },
-            { params: { id: '2' } },
-            { params: { id: '3' } }
-        ],
-        fallback: 'blocking'
-    };
 }
 
 type Props = {

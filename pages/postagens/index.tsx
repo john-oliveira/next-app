@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next"
+import { GetStaticProps, NextPage } from "next"
 import Link from "next/link"
 import Post from "../../model/Post"
 
@@ -16,14 +16,15 @@ const PostsPage: NextPage<Props> = ({ posts }) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts')
     const posts: Post[] = await res.json()
 
     return {
         props: {
             posts
-        }
+        },
+        revalidate: 10
     }
 }
 
