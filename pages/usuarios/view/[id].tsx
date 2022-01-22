@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import Usuario from "../../model/Usuario"
+import Usuario from "../../../model/Usuario"
 
 const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
     return (

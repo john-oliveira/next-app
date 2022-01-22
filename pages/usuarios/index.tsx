@@ -7,8 +7,12 @@ const UsuariosPage: NextPage<Props> = ({ usuarios }) => {
     <ul>
       {usuarios.map((usu, key) => (
         <li key={key}>{usu.name} {" | "}
-          <Link href={`/usuarios/${usu.id}`}>
-            <a>Detalhes</a>
+          <Link href={`/usuarios/view/${usu.id}`}>
+            <a>Visualizar</a>
+          </Link>
+          {" | "}
+          <Link href={`/usuarios/edit/${usu.id}`}>
+            <a>Editar</a>
           </Link>
         </li>
       ))}
