@@ -14,8 +14,7 @@ const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
     const { id } = context.params! // Non-null assertion operator;
-    //const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-    const res = await fetch(`http://localhost:3000/api/usuarios/${id}`)
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
     const usuario: Usuario = await res.json()
     return {
         props: {

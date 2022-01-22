@@ -21,8 +21,7 @@ const UsuariosPage: NextPage<Props> = ({ usuarios }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  //const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const res = await fetch('http://localhost:3000/api/usuarios');
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
   const usuarios: Usuario[] = await res.json();
 
   return {

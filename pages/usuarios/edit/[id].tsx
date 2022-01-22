@@ -15,14 +15,14 @@ const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
     usuario.name = name;
     usuario.username = username;
     usuario.email = email;
-    const res = await fetch(`http://localhost:3000/api/usuarios/add`, {
+    /*const res = await fetch(`http://localhost:3000/api/usuarios/add`, {
       method: 'POST',
       body: JSON.stringify(usuario)
-    })
+    })*/
 
-    if(res.status == 200){
+    //if(res.status == 200){
       router.push('/usuarios');
-    }
+    //}
   }
 
   return (
@@ -43,8 +43,7 @@ const UsuarioDetailPage: NextPage<Props> = ({ usuario }) => {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
   const { id } = context.params! // Non-null assertion operator;
-  //const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-  const res = await fetch(`http://localhost:3000/api/usuarios/${id}`)
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
   const usuario: Usuario = await res.json()
   return {
     props: {
