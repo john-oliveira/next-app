@@ -1,10 +1,15 @@
 import { GetServerSideProps, NextPage } from "next"
+import Link from "next/link"
+import Post from "../../model/Post"
 
 const PostsPage: NextPage<Props> = ({ posts }) => {
     return (
         <ul>
             {posts.map((po, key) => (
-                <li key={key}>{po.title}
+                <li key={key}>{po.title} {" | "}
+                    <Link href={`/postagens/${po.id}`}>
+                        <a>Visualizar</a>
+                    </Link>
                 </li>
             ))}
         </ul>
@@ -20,10 +25,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
             posts
         }
     }
-}
-
-type Post = {
-    title: string;
 }
 
 type Props = {
